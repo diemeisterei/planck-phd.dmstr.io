@@ -16,10 +16,10 @@ return [
         ],
         'urlManager' => [
             'rules' => [
-                'docs/api/<file:[a-zA-Z0-9_\-\./\+]*>.html' => 'docs/api/index',
-                'docs/api/<file:[a-zA-Z0-9_\-\./\+]*>' => 'docs/api/index',
-                'docs/api/index/<file:[a-zA-Z0-9_\-\./\+]*>.html' => 'docs/api/index',
-                'docs/api/index/<file:[a-zA-Z0-9_\-\./\+]*>' => 'docs/api/index',
+                'docs/guide/<file:[a-zA-Z0-9_\-\./\+]*>.html' => 'docs/default/index',
+                'docs/guide/<file:[a-zA-Z0-9_\-\./\+]*>' => 'docs/default/index',
+                'docs/api/<file:[a-zA-Z0-9_\-\./\+]*>.html' => 'docs/html/index',
+                'docs/api/<file:[a-zA-Z0-9_\-\./\+]*>' => 'docs/html/index',
             ]
         ]
     ],
