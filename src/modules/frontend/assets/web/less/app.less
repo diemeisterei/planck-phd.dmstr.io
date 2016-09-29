@@ -1,5 +1,4 @@
 @import "bootstrap";
-
 // Customized version
 @import "variables";
 
@@ -7,17 +6,16 @@
 @secondary-color-2: #8691BE;
 
 HTML {
-  background-color: #111;
-  .gradient(left, @secondary-color-1, @secondary-color-2);
+  background-color: #ddd;
+  //.gradient(left, @secondary-color-1, @secondary-color-2);
 }
 
 BODY {
   margin: 0;
-  .gradient(left, @secondary-color-1, @secondary-color-2);
+  //.gradient(left, @secondary-color-1, @secondary-color-2);
   //color: #e5e5e5;
   height: 100%;
 }
-
 
 PRE, CODE {
   background-color: darken(#e5e5e5, 15%);
@@ -69,25 +67,32 @@ BLOCKQUOTE {
 
 header {
   .jumbotron {
-    color: #fff;
+    //color: #fff;
     padding: 100px 0;
     H3, h4 {
       color: @secondary-color-2;
     }
-    .gradient(bottom, #444, #111);
+    //.gradient(bottom, #444, #111);
     .btn-default {
       background: lighten(@secondary-color-1, 10%);
       color: #fff;
     }
     .icons A {
-      color: #fff;
+      color: @secondary-color-1;
       font-size: 3em;
       margin: 0.1em;
       &:hover {
         color: @secondary-color-1;
       }
     }
+    .sidebar {
+      .icons A {
+        font-size: 2em;
+        color: @gray-light;
+      }
+    }
   }
+
 }
 
 .technology {
@@ -97,7 +102,7 @@ header {
   //font-weight: @headings-font-weight;
   //font-size: @jumbotron-font-size;
   //float: left;
-  color: @gray-lighter;
+  color: @gray-light;
 }
 
 /* Mixin */
@@ -132,7 +137,7 @@ header {
   td:first-child {
     width: 50%;
     overflow: scroll;
-    word-break:break-all;
+    word-break: break-all;
   }
   td {
     //width: 70%;

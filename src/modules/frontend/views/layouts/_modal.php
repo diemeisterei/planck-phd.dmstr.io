@@ -8,8 +8,8 @@ use yii\helpers\Html;
         <div class="modal-body">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
                     class="sr-only">Close</span></button>
-            <div class="text-center">
-                <?= Html::img('http://t.phundament.com/p4-64-bw.png', ['alt' => 'Logo Phundament 4']) ?>
+            <div class="">
+
                 <h3><?= getenv('APP_NAME') ?></h3>
 
                 <p>
@@ -21,6 +21,13 @@ use yii\helpers\Html;
                 <p class="small">
                     Build with <?= Html::a('phd5', 'http://phd.dmstr.io') ?>
                 </p>
+
+                <hr/>
+
+                <div class="pull-right">
+                    <?= Html::a('Backend', ['/backend'], ['class' => 'btn btn-default btn-xs']) ?>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>

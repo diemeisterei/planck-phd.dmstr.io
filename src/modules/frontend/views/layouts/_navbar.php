@@ -9,16 +9,11 @@ use yii\bootstrap\NavBar;
 $menuItems = [];
 $menuItems[] = [
     'label' => '<i class="fa fa-rocket"></i> TL;dr',
-    'url' => 'https://github.com/phundament/app',
+    'url' => '#',
     'linkOptions' => ['data-toggle' => 'modal', 'data-target' => '#tldrModal'],
     'visible' => true
 ];
 
-$menuItems[] = [
-    'label' => '<i class="fa fa-github-alt"></i> GitHub',
-    'url' => 'https://github.com/phundament/app',
-    'visible' => true
-];
 
 if (\Yii::$app->hasModule('user')) {
     if (\Yii::$app->user->isGuest) {
