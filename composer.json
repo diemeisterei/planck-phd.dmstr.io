@@ -22,5 +22,13 @@
             "github-no-api": true
         },
         "asset-pattern-skip-version": "(-build|-patch)"
+    },
+    "config": {
+        "preferred-install": {
+            "dmstr/*": "source",
+            "hrzg/*": "source",
+            "schmunk42/*": "source",
+            "*": "auto"
+        }
     }
 }
