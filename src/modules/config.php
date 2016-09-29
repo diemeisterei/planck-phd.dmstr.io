@@ -17,7 +17,7 @@ return [
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@app/views/layouts' => '@modules/frontend/views/layouts',
+                    '@app/views/layouts' => '@app/modules/frontend/views/layouts',
                 ],
             ],
         ],
@@ -37,6 +37,9 @@ return [
             'class' => 'schmunk42\markdocs\Module',
             'layout' => '@app/views/layouts/container',
             'enableEmojis' => true
+        ],
+        'user' => [
+            'layout' => '@app/views/layouts/container',
         ],
     ],
     'params' => [
