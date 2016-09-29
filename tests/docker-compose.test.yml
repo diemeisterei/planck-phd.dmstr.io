@@ -5,6 +5,9 @@ version: '2'
 services:
   php:
     working_dir: /app/tests
+    build:
+      dockerfile: Dockerfile
+      context: .
     ports:
       - 80
     depends_on:
