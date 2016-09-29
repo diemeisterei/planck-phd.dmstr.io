@@ -1,0 +1,140 @@
+@import "bootstrap";
+
+// Customized version
+@import "variables";
+
+@secondary-color-1: #4E5CA2;
+@secondary-color-2: #8691BE;
+
+HTML {
+  background-color: #111;
+  .gradient(left, @secondary-color-1, @secondary-color-2);
+}
+
+BODY {
+  margin: 0;
+  .gradient(left, @secondary-color-1, @secondary-color-2);
+  //color: #e5e5e5;
+  height: 100%;
+}
+
+
+PRE, CODE {
+  background-color: darken(#e5e5e5, 15%);
+  color: #111;
+}
+
+A {
+  color: #4F5B93;
+  &:hover {
+    color: lighten(@secondary-color-1, 10%);
+  }
+}
+
+BLOCKQUOTE {
+  background: @alert-warning-bg;
+}
+
+.alert-wrapper {
+  margin-top: 60px;
+  &:empty {
+    display: none;
+  }
+}
+
+.navbar {
+  margin-bottom: 0px;
+  a {
+    color: #fff;
+  }
+}
+
+.glyphicon-lg {
+  font-size: 2em;
+  color: #ccc;
+  margin: 1em 0 0;
+}
+
+.container-layout {
+  margin-top: 50px;
+}
+
+.breadcrumb, .panel, .panel-body {
+  //background-color: darken(@body-bg, 5%);
+}
+
+.navbar.navbar-fixed-top ul.nav > li > a:hover {
+  background-color: @secondary-color-2;
+}
+
+header {
+  .jumbotron {
+    color: #fff;
+    padding: 100px 0;
+    H3, h4 {
+      color: @secondary-color-2;
+    }
+    .gradient(bottom, #444, #111);
+    .btn-default {
+      background: lighten(@secondary-color-1, 10%);
+      color: #fff;
+    }
+    .icons A {
+      color: #fff;
+      font-size: 3em;
+      margin: 0.1em;
+      &:hover {
+        color: @secondary-color-1;
+      }
+    }
+  }
+}
+
+.technology {
+  font-weight: normal;
+  font-size: 1.4em;
+  line-height: 1.5em;
+  //font-weight: @headings-font-weight;
+  //font-size: @jumbotron-font-size;
+  //float: left;
+  color: @gray-lighter;
+}
+
+/* Mixin */
+.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+  background-color: @start;
+  background-image: -webkit-linear-gradient(@origin, @start, @stop);
+  background-image: -moz-linear-gradient(@origin, @start, @stop);
+  background-image: -o-linear-gradient(@origin, @start, @stop);
+  background-image: -ms-linear-gradient(@origin, @start, @stop);
+  background-image: linear-gradient(@origin, @start, @stop);
+}
+
+.toc {
+
+  H1 {
+    font-size: 1.5em;
+  }
+
+  H2 {
+    font-size: 1.25em;
+  }
+
+  H3 {
+    font-size: 1.1em;
+  }
+
+}
+
+.summaryTable {
+  .table;
+  .table-condensed;
+  td:first-child {
+    width: 50%;
+    overflow: scroll;
+    word-break:break-all;
+  }
+  td {
+    //width: 70%;
+  }
+}
