@@ -65,7 +65,7 @@ echo Nav::widget(
     [
         'options' => ['class' => 'navbar-nav'],
         'encodeLabels' => false,
-        'items' => \dmstr\modules\pages\models\Tree::getMenuItems('root_'.\Yii::$app->language),
+        'items' => \dmstr\modules\pages\models\Tree::getMenuItems('root'),
     ]
 );
 
