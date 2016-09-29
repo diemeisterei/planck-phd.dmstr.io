@@ -53,8 +53,8 @@ if (\Yii::$app->hasModule('user')) {
 
 NavBar::begin(
     [
-        'brandLabel' => getenv('APP_TITLE'),
-        'brandLabel' => Html::img('http://t.phundament.com/p4-32-bw.png'),
+        #'brandLabel' => getenv('APP_TITLE'),
+        'brandLabel' => '<i class="fa fa-heart"></i>',
         'brandUrl' => \Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-default navbar-fixed-top',
@@ -93,7 +93,7 @@ NavBar::end();
                     <h3>One-liner</h3>
                     <p>
                         This will download a demo stack with <code>curl</code> and pipe it directly to <code>docker-compose</code>,
-                        which starts the containers in a <b>tldr</b> project stack.
+                        whichmka starts the containers in a <b>tldr</b> project stack.
                     </p>
                     <div class="row">
                         <div class="col-sm-12">

@@ -53,7 +53,7 @@ switch (Yii::$app->settings->get('registerPrototypeAsset', 'app.assets')) {
         </p>
         <p class="pull-left">
             <?= Html::a(
-                Html::img('http://t.phundament.com/p4-16-bw.png', ['alt' => 'Icon Phundament 4']),
+                '<i class="fa fa-heartbeat"></i>',
                 '#',
                 ['data-toggle' => 'modal', 'data-target' => '#infoModal']
             ) ?>

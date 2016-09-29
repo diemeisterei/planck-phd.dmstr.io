@@ -19,7 +19,7 @@ use yii\helpers\Html;
                 </p>
 
                 <p class="small">
-                    Build with <?= Html::a('Phundament 4', 'http://phundament.com') ?>
+                    Build with <?= Html::a('phd5', 'http://phd.dmstr.io') ?>
                 </p>
             </div>
         </div>
