@@ -42,6 +42,10 @@ $releaseNano = $client->api('repo')->releases()->latest('dmstr', 'planck');
                         The zero source-code quick-starter repo built with phd5
                     </p>
                     <p>
+                        <?= Html::a(FA::icon(FA::_BOOK).' Quick start tutorial', ['/docs/default/index','file'=>'tutorials/quick-start-planck.md']) ?>
+                    </p>
+
+                    <p>
                         <iframe
                             src="https://ghbtns.com/github-btn.html?user=dmstr&repo=planck&type=star&count=true&size=large"
                             frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
