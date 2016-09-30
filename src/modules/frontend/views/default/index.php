@@ -64,6 +64,7 @@ $releaseNano = $client->api('repo')->releases()->latest('dmstr', 'planck');
                     $code = <<<CODE
 cp .env-dist .env
 docker-compose run --rm php yii app/setup
+docker-compose run --rm php yii user/password admin admin1
 docker-compose up -d
 CODE;
 
