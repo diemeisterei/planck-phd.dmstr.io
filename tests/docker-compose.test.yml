@@ -11,6 +11,7 @@ services:
     ports:
       - 80
     depends_on:
+      - db
       - firefox
     environment:
       - APP_NAME=test-ee
