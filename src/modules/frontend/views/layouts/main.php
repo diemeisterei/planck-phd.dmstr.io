@@ -12,7 +12,7 @@ $this->title = $this->title.' - '.getenv('APP_TITLE');
 
 switch (Yii::$app->settings->get('registerPrototypeAsset', 'app.assets')) {
     case true:
-        \app\modules\prototype\assets\DbAsset::register($this);
+        \dmstr\modules\prototype\assets\DbAsset::register($this);
         break;
     case null:
         Yii::$app->settings->set('registerPrototypeAsset', true, 'app.assets');

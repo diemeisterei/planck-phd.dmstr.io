@@ -18,6 +18,7 @@ class Repo extends Widget
     public $info;
     public $release;
     public $showDownload;
+    public $textHtml;
 
     public function init()
     {
