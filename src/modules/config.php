@@ -4,7 +4,8 @@
 return [
     'defaultRoute' => 'frontend',
     'aliases' => [
-        '@modules/frontend' => '@app/modules/frontend'
+        '@modules/frontend' => '@app/modules/frontend',
+        '@dmstr/widgets/github' => '@app/modules/yii2-github-widgets/src',
     ],
     'controllerMap' => [
         'app:migrate' => [
