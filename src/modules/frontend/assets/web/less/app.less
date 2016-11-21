@@ -1,6 +1,21 @@
-@import "bootstrap";
-// Customized version
-@import "variables";
+@theme: 'simplex';
+
+// Framework and base theme
+@import "/app/vendor/bower/bootstrap/less/bootstrap.less";
+@import "/app/vendor/thomaspark/bootswatch/@{theme}/variables.less";
+@import "/app/vendor/thomaspark/bootswatch/@{theme}/bootswatch.less";
+
+// Theme customizations
+@icon-font-path: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/';
+@navbar-border-radius: 0px;
+@navbar-margin-bottom: 0px;
+@font-size-base: 16px;
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@font-family-sans-serif: 'Roboto';
+//@import "open-color";
+//@body-bg: #ddd;
+@brand-primary: #4E5CA2;
+
 
 @secondary-color-1: #4E5CA2;
 @secondary-color-2: #8691BE;
@@ -18,8 +33,8 @@ BODY {
 }
 
 PRE, CODE {
-  background-color: darken(#e5e5e5, 15%);
-  color: #111;
+  //background-color: darken(#e5e5e5, 15%);
+  //color: #111;
 }
 
 A {
@@ -141,5 +156,11 @@ header {
   }
   td {
     //width: 70%;
+  }
+}
+
+.docs .file-content {
+  img:not(.emoji) {
+    .img-responsive;
   }
 }

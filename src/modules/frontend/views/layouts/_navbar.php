@@ -2,23 +2,50 @@
 
 namespace app\views\layouts;
 
-use dmstr\helpers\Html;
+use dmstr\modules\pages\models\Tree;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 
 $menuItems = [];
+$languageItems = [];
+
+// create label for dev and test environment
+switch (YII_ENV) {
+    case 'dev':
+    case 'test':
+        $envLabel = "<span class='label label-warning'>".YII_ENV.'</span>';
+        break;
+    default:
+        $envLabel = '';
+}
+
+$debugLabel = YII_DEBUG ? "<span class='label label-danger'>DEBUG</span>" : '';
+
 $menuItems[] = [
-    'label' => '<i class="fa fa-rocket"></i> TL;dr',
-    'url' => '#',
-    'linkOptions' => ['data-toggle' => 'modal', 'data-target' => '#tldrModal'],
-    'visible' => true
+    'label' => $envLabel.' '.$debugLabel,
 ];
 
+foreach (\Yii::$app->urlManager->languages as $language) {
+    $languageItems[] = [
+        'url' => ['/', \Yii::$app->urlManager->languageParam => $language],
+        'label' => $language,
+    ];
+}
+
+$menuItems[] = [
+    'label' => '<i class="glyphicon glyphicon-globe"></i> ',
+    'options' => ['id' => 'link-languages-menu'],
+    'items' => $languageItems,
+];
 
 if (\Yii::$app->hasModule('user')) {
     if (\Yii::$app->user->isGuest) {
-        #$menuItems[] = ['label' => 'Signup', 'url' => ['/user/registration/register']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/user/security/login']];
+        //$menuItems[] = ['label' => 'Signup', 'url' => ['/user/registration/register']];
+        $menuItems[] = [
+            'label' => 'Login',
+            'url' => ['/user/security/login'],
+            'linkOptions' => ['id' => 'link-login'],
+        ];
     } else {
         $menuItems[] = [
             'label' => '<i class="glyphicon glyphicon-user"></i> '.\Yii::$app->user->identity->username,
@@ -27,6 +54,10 @@ if (\Yii::$app->hasModule('user')) {
                 [
                     'label' => '<i class="glyphicon glyphicon-user"></i> Profile',
                     'url' => ['/user/profile/show', 'id' => \Yii::$app->user->id],
+                ],
+                [
+                    'label' => '<i class="glyphicon glyphicon-cog"></i> Settings',
+                    'url' => ['/user/settings/profile'],
                 ],
                 '<li class="divider"></li>',
                 [
@@ -37,25 +68,29 @@ if (\Yii::$app->hasModule('user')) {
             ],
         ];
         $menuItems[] = [
-            'label' => '<i class="glyphicon glyphicon-cog"></i>',
+            'label' => '<i class="glyphicon glyphicon-pencil"></i>',
+            'visible' => \Yii::$app->user->can('backend_default_index', ['route' => true]),
+            'items' => \Yii::$app->params['context.menuItems'],
+        ];
+        $menuItems[] = [
+            'label' => '<i class="glyphicon glyphicon-dashboard"></i>',
             'url' => ['/backend'],
-            'visible' => \Yii::$app->user->can(
-                    'backend_default'
-                ) || (isset(\Yii::$app->user->identity) && \Yii::$app->user->identity->isAdmin),
+            'visible' => \Yii::$app->user->can('backend_default_index', ['route' => true]),
+            'items' => Tree::getMenuItems('backend', true, Tree::GLOBAL_ACCESS_DOMAIN),
         ];
     }
 }
 
 NavBar::begin(
     [
-        #'brandLabel' => getenv('APP_TITLE'),
-        'brandLabel' => '<i class="fa fa-heart"></i>',
+        'brandLabel' => getenv('APP_TITLE'),
         'brandUrl' => \Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-default navbar-fixed-top',
+            'class' => 'navbar navbar-default navbar-fixed',
         ],
     ]
 );
+
 echo Nav::widget(
     [
         'options' => ['class' => 'navbar-nav'],
@@ -73,33 +108,3 @@ echo Nav::widget(
 );
 
 NavBar::end();
-
-?>
-
-<!-- Info Modal -->
-<div class="modal fade" id="tldrModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <div class="text-center">
-
-                    <h3>One-liner</h3>
-                    <p>
-                        This will download a demo stack with <code>curl</code> and pipe it directly to <code>docker-compose</code>,
-                        whichmka starts the containers in a <b>tldr</b> project stack.
-                    </p>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <textarea style="width: 100%" rows="4">curl https://raw.githubusercontent.com/phundament/playground/master/stacks/app-demo/docker-compose.yml | docker-compose -f - -p tldr up</textarea>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-

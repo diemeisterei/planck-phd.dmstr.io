@@ -1,4 +1,4 @@
-FROM dmstr/phd5-app
+FROM registry-v2.hrzg.de/hrzg/ee:0.9.0-alpha2
 
 # Additional packages
 COPY ./composer.* /app/

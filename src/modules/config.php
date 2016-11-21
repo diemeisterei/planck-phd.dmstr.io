@@ -4,7 +4,8 @@
 return [
     'defaultRoute' => 'frontend',
     'aliases' => [
-        '@modules/frontend' => '@app/modules/frontend'
+        '@modules/frontend' => '@app/modules/frontend',
+        '@dmstr/widgets/github' => '@app/modules/yii2-github-widgets/src',
     ],
     'controllerMap' => [
         'app:migrate' => [
@@ -26,6 +27,8 @@ return [
                 'docs/guide/<file:[a-zA-Z0-9_\-\./\+]+>' => 'docs/default/index',
                 'docs/api/<file:[a-zA-Z0-9_\-\./\+]*>.html' => 'docs/html/index',
                 'docs/api/<file:[a-zA-Z0-9_\-\./\+]*>' => 'docs/html/index',
+                'docs/help/<file:[a-zA-Z0-9_\-\./\+]+>' => 'help/default/index',
+                #'docs/help' => 'help/default/index',
             ]
         ]
     ],

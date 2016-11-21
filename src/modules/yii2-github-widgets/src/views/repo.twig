@@ -1,0 +1,17 @@
+<h3>
+    {{ repo.vendor }}/{{ repo.name }}
+    <a href="{{ repo.info.html_url }}"><i class="fa fa-github"></i></a>
+    <small><i class="fa fa-star"></i> {{ repo.info.stargazers_count }}</small>
+</h3>
+
+<p>
+    {{  repo.info.description }}
+</p>
+
+<p>
+    <a href="{{ repo.release.html_url}}">{{ repo.release.name }}</a>
+    {% if repo.showDownload %}
+    <a href="{{ repo.release.zipball_url}}"><i class="fa fa-download"></i> Download</a>
+    {% endif %}
+</p>
+
