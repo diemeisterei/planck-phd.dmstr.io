@@ -11,7 +11,11 @@
 <p>
     <a href="{{ repo.release.html_url}}">{{ repo.release.name }}</a>
     {% if repo.showDownload %}
-    <a href="{{ repo.release.zipball_url}}"><i class="fa fa-download"></i> Download</a>
+        <a href="{{ repo.release.zipball_url}}"><i class="fa fa-download"></i> Download</a>
     {% endif %}
 </p>
+
+<div>
+    {{ repo.textHtml | raw }}
+</div>
 
