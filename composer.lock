@@ -5005,7 +5005,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.13",
+            "version": "v2.8.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -6505,16 +6505,16 @@
         },
         {
             "name": "schmunk42/yii2-markdocs-module",
-            "version": "0.4.0-beta4",
+            "version": "0.4.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmunk42/yii2-markdocs-module.git",
-                "reference": "0a61a5f3f52af6bc799caa9e4c5ffed6f25a689f"
+                "reference": "9a591f11355bd8150c4db7050987d82b452df91f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmunk42/yii2-markdocs-module/zipball/0a61a5f3f52af6bc799caa9e4c5ffed6f25a689f",
-                "reference": "0a61a5f3f52af6bc799caa9e4c5ffed6f25a689f",
+                "url": "https://api.github.com/repos/schmunk42/yii2-markdocs-module/zipball/9a591f11355bd8150c4db7050987d82b452df91f",
+                "reference": "9a591f11355bd8150c4db7050987d82b452df91f",
                 "shasum": ""
             },
             "require": {
@@ -6546,7 +6546,7 @@
                 "extension",
                 "yii2"
             ],
-            "time": "2016-09-29 23:56:46"
+            "time": "2016-11-21 00:19:09"
         },
         {
             "name": "scrivo/highlight.php",
