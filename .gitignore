@@ -2,3 +2,5 @@
 runtime
 vendor
 version
+
+composer.phd5.json
