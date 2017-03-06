@@ -1,5 +1,27 @@
 <?php
 
+// DI
+Yii::$container->set(
+    'gitlab',
+    function () {
+        $gitlab = new \Gitlab\Client(Yii::$app->settings->get('url', 'api.gitlab'));
+        $gitlab->authenticate(Yii::$app->settings->get('token', 'api.gitlab'), \Gitlab\Client::AUTH_URL_TOKEN);
+        return $gitlab;
+    }
+);
+
+Yii::$container->set(
+    'github',
+    function () {
+        $client = new \Github\Client(
+            new \Github\HttpClient\CachedHttpClient(array('cache_dir' => '/tmp/github-api-cache'))
+        );
+        $client->authenticate(Yii::$app->settings->get('token', 'api.github'), true);
+        return $client;
+    }
+);
+
+
 // return configuration overrides for modules
 return [
     'defaultRoute' => 'frontend',
@@ -15,13 +37,6 @@ return [
         ]
     ],
     'components' => [
-        'view' => [
-            'theme' => [
-                'pathMap' => [
-                    '@app/views/layouts' => '@app/modules/frontend/views/layouts',
-                ],
-            ],
-        ],
         'urlManager' => [
             'rules' => [
                 'docs/guide/<file:[a-zA-Z0-9_\-\./\+]+>' => 'docs/default/index',
@@ -38,12 +53,12 @@ return [
         ],
         'docs' => [
             'class' => 'schmunk42\markdocs\Module',
-            'layout' => '@app/views/layouts/container',
+            'layout' => '@app/views/layouts/container-fluid',
             'enableEmojis' => true
         ],
         'help' => [
             'class' => 'schmunk42\markdocs\Module',
-            'layout' => '@app/views/layouts/container',
+            'layout' => '@app/views/layouts/container-fluid',
             'enableEmojis' => true
         ],
         'user' => [
