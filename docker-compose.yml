@@ -1,4 +1,8 @@
 version: '2'
 services:
-    php:
-        image: ${STACK_PHP_IMAGE}
+  php:
+    image: ${STACK_PHP_IMAGE}
+    depends_on:
+      - redis
+  redis:
+    image: redis:3

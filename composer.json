@@ -2,7 +2,9 @@
     "name": "dmstr/phd5-app",
     "minimum-stability": "beta",
     "require": {
-        "knplabs/github-api": "^1.7.1"
+        "knplabs/github-api": "^1.7.1",
+        "dektrium/yii2-rbac": "dev-master#0943e66c450132b306584a37caefc2aa04258372 as 0.3.999",
+        "creocoder/yii2-flysystem": "dev-master#0209d17a68027889a10a9133e4eb11f8dd6333cf as 0.8.999"
     },
     "extra": {
         "asset-installer-paths": {
@@ -13,6 +15,13 @@
             "github-no-api": true
         },
         "asset-pattern-skip-version": "(-build|-patch)",
+        "asset-repositories": {
+            "bower-asset/emojify.js": {
+                "type": "bower-vcs",
+                "url": "https://github.com/BoboTiG/emojify.js.git",
+                "name": "bower-asset/emojify.js"
+            }
+        },
         "merge-plugin": {
             "require": [
                 "composer.phd5.json"
