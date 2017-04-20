@@ -29,24 +29,27 @@ class Repo extends Widget
         $cache = \Yii::$app->cache;
 
         $client = new Client(new \Github\HttpClient\CachedHttpClient(['cache_dir' => '/app/runtime/github-api-cache']));
-        $client->authenticate($token,null,Client::AUTH_HTTP_TOKEN);
+        $client->authenticate($token, null, Client::AUTH_HTTP_TOKEN);
 
-        $key = __NAMESPACE__.':repo:show:'.$this->vendor.'/'.$this->name;
+        // TODO: check repo, move to function
+
+        $key = __NAMESPACE__.':show:'.$this->vendor.'/'.$this->name;
         $this->info = $cache->getOrSet(
             $key,
             function () use ($client) {
                 return $client->api('repo')->show($this->vendor, $this->name);
             },
-            3600
+            YII_ENV_PROD ? 3600 : 1
         );
 
-        $key = __NAMESPACE__.':repo:releases:'.$this->vendor.'/'.$this->name;
+        $key = __NAMESPACE__.':releases:'.$this->vendor.'/'.$this->name;
         $this->release = $cache->getOrSet(
             $key,
             function () use ($client) {
-                return $client->api('repo')->releases()->latest($this->vendor, $this->name);
+                $release = $client->api('repo')->releases()->all($this->vendor, $this->name)[0];
+                return $release;
             },
-            3600
+            YII_ENV_PROD ? 3600 : 1
         );
 
         \Yii::trace($this->info, __METHOD__);
