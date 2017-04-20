@@ -2,6 +2,8 @@
 
 namespace dmstr\widgets\github;
 
+use Github\Client;
+use Github\HttpClient\Listener\AuthListener;
 use yii\base\Widget;
 
 /**
@@ -24,10 +26,21 @@ class Repo extends Widget
     {
         $release = 'n/a';
         $client = new \Github\Client(new \Github\HttpClient\CachedHttpClient(['cache_dir' => '/app/runtime/github-api-cache']));
-        #var_dump($this->vendor);exit;
-        $this->info = $client->api('repo')->show($this->vendor, $this->name);
+        #$client->authenticate('XXXX',null,Client::AUTH_HTTP_TOKEN);
+
+        $cache = \Yii::$app->cache;
+
+        $key = __NAMESPACE__.':repo:show:'.$this->vendor.'/'.$this->name;
+        $this->info = $cache->getOrSet($key, function () use ($client) {
+            return $client->api('repo')->show($this->vendor, $this->name);
+        });
+
+        $key = __NAMESPACE__.':repo:releases:'.$this->vendor.'/'.$this->name;
+        $this->release = $cache->getOrSet($key, function () use ($client) {
+            return $client->api('repo')->releases()->latest($this->vendor, $this->name);
+        });
+
         \Yii::trace($this->info, __METHOD__);
-        $this->release = $client->api('repo')->releases()->latest($this->vendor, $this->name);
         \Yii::trace($this->release, __METHOD__);
     }
 

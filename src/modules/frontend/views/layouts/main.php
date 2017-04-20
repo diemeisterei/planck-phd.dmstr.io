@@ -10,7 +10,7 @@ use yii\helpers\Html;
 /* @var $content string */
 $this->title = $this->title.' - '.getenv('APP_TITLE');
 
-switch (Yii::$app->settings->get('registerPrototypeAsset', 'app.assets')) {
+switch (Yii::$app->settings->get('registerPrototypeAssetKey', 'app.assets')) {
     case true:
         \dmstr\modules\prototype\assets\DbAsset::register($this);
         break;

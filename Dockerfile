@@ -1,4 +1,4 @@
-FROM dmstr/phd5-app:5.0.0-beta26
+FROM dmstr/phd5-app:5.0.0-beta37
 
 # Additional packages
 COPY ./composer.* /app/

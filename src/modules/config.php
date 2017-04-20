@@ -37,6 +37,14 @@ return [
         ]
     ],
     'components' => [
+        'assetManager' => [
+            'dirMode' => 0775,
+            // Hashing for distributed systems
+            'hashCallback' => \dmstr\helpers\AssetHash::byFileTimeAndLess(),
+            // Note: You need to bundle asset with `yii asset` for development/debugging
+            #'bundles' => $bundles,
+            'basePath' => '@app/../web/assets',
+        ],
         'urlManager' => [
             'rules' => [
                 'docs/guide/<file:[a-zA-Z0-9_\-\./\+]+>' => 'docs/default/index',
@@ -45,7 +53,27 @@ return [
                 'docs/help/<file:[a-zA-Z0-9_\-\./\+]+>' => 'help/default/index',
                 #'docs/help' => 'help/default/index',
             ]
-        ]
+        ],
+        'view' => [
+            'class' => 'yii\web\View',
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@app/modules/frontend/views',
+                ],
+            ],
+            'renderers' => [
+                'twig' => [
+                    'class' => 'yii\twig\ViewRenderer',
+                    'globals' => [
+                        'Url' => '\yii\helpers\Url',
+                    ],
+                    'extensions' => (getenv('TWIG_DEBUG_MODE')) ? [new Twig_Extension_Debug()] : null,
+                    'options' => [
+                        'debug' => (getenv('TWIG_DEBUG_MODE')) ? true : false,
+                    ],
+                ],
+            ],
+        ],
     ],
     'modules' => [
         'frontend' => [

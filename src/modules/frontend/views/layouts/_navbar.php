@@ -85,8 +85,11 @@ NavBar::begin(
     [
         'brandLabel' => getenv('APP_TITLE'),
         'brandUrl' => \Yii::$app->homeUrl,
+        'innerContainerOptions' => [
+          'class' => 'container-fluid'
+        ],
         'options' => [
-            'class' => 'navbar navbar-default navbar-fixed',
+            'class' => 'navbar navbar-default navbar-fixed-top',
         ],
     ]
 );
