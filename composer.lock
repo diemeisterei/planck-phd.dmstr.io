@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "704d5ecaa10b141a390f9f3790ff6d97",
+    "content-hash": "c9bbcfde8fad7623d31f69b3c2fc290e",
     "packages": [
         {
             "name": "2amigos/yii2-chartjs-widget",
@@ -4338,16 +4338,16 @@
         },
         {
             "name": "pheme/yii2-settings",
-            "version": "0.4",
+            "version": "0.5-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phemellc/yii2-settings.git",
-                "reference": "186a7123797a5459883043518a563b26bc0fd6f0"
+                "reference": "c7eb302e3ceba33570041b1d22d98a346317b66a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phemellc/yii2-settings/zipball/186a7123797a5459883043518a563b26bc0fd6f0",
-                "reference": "186a7123797a5459883043518a563b26bc0fd6f0",
+                "url": "https://api.github.com/repos/phemellc/yii2-settings/zipball/c7eb302e3ceba33570041b1d22d98a346317b66a",
+                "reference": "c7eb302e3ceba33570041b1d22d98a346317b66a",
                 "shasum": ""
             },
             "require": {
@@ -4376,7 +4376,7 @@
                 "config",
                 "yii2"
             ],
-            "time": "2016-03-03T05:34:35+00:00"
+            "time": "2017-03-16T01:30:44+00:00"
         },
         {
             "name": "pheme/yii2-toggle-column",
@@ -9896,9 +9896,17 @@
             "time": "2016-03-18T14:09:46+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "0.4.999",
+            "alias_normalized": "0.4.999.0",
+            "version": "0.5.0.0-beta",
+            "package": "pheme/yii2-settings"
+        }
+    ],
     "minimum-stability": "beta",
     "stability-flags": {
+        "pheme/yii2-settings": 10,
         "dmstr/yii2-libs-metapackage": 10,
         "ckeditor/ckeditor": 20,
         "roave/security-advisories": 20

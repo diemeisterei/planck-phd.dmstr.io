@@ -2,6 +2,8 @@
 
 namespace dmstr\widgets\github;
 
+use dmstr\web\EmojifyJsAsset;
+use Github\Client;
 use yii\base\Widget;
 
 /**
@@ -23,10 +25,11 @@ class Repo extends Widget
     public function init()
     {
         $release = 'n/a';
-        $client = new \Github\Client(new \Github\HttpClient\CachedHttpClient(['cache_dir' => '/app/runtime/github-api-cache']));
-        #$client->authenticate('XXXX',null,Client::AUTH_HTTP_TOKEN);
-
+        $token = \Yii::$app->settings->getOrSet('apiToken', 'NOT_SET', 'github', 'string');
         $cache = \Yii::$app->cache;
+
+        $client = new Client(new \Github\HttpClient\CachedHttpClient(['cache_dir' => '/app/runtime/github-api-cache']));
+        $client->authenticate($token,null,Client::AUTH_HTTP_TOKEN);
 
         $key = __NAMESPACE__.':repo:show:'.$this->vendor.'/'.$this->name;
         $this->info = $cache->getOrSet(
@@ -52,6 +55,7 @@ class Repo extends Widget
 
     public function run()
     {
+        EmojifyJsAsset::register($this->view);
         return $this->render('repo.twig', ['repo' => $this]);
     }
 }
